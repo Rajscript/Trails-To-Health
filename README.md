@@ -18,5 +18,4 @@ Trails to Health is a web application that recommends hiking trails based on use
 If you are interested in contributing to this project, please submit a pull request or open an issue
 
 # License
-This project is licensed under [MIT License](https://github.com/Rajscript/Trails-To-Health/blob/main/LICENSE) - see the license file for details.
-
+This project is licensed under [MIT License](https://github.com/Rajscript/Trails-To-Health/blob/main/LICENSE.md) - see the license file for details.
