@@ -3,9 +3,9 @@ Trails to Health is a web application that recommends hiking trails based on use
 
 # Installation
 1. Clone the repository: `git clone https://github.com/Rajscript/Trails-To-Health.git`
-2. Create and activate a new environment: `conda create --name trailstohealth python=3.9`
-                                           `conda activate trailstohealth`
-3. Install the required libraries: `pip install -r requirements.txt`
+2. Create a new environment: `conda create --name trailstohealth python=3.9`
+3. Activate your new environment : `conda activate trailstohealth`
+4. Install the required libraries: `pip install -r requirements.txt`
 
 # Usage
 1. Start the application by running the following command: `python App.py`
