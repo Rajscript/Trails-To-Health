@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trail Recommendations</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/recommend.css') }}">
+</head>
+<body>
+  <h1>Trail Recommendations</h1>
+  {{ recommendations|safe }}
+</body>
+</html>

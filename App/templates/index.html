@@ -1,0 +1,51 @@
+<html>
+   <head>
+       <meta charset="utf-8">
+       <title> In Nature </title>
+       <!--<link rel="stylesheet" type="text/css" href="../static/css/style.css"> -->
+       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+   </head>
+   <body>
+    <h1>Trails to Health</h1>
+    <div class="trail_reccomendation">
+       <br>
+        <form action="/recommend" method="post">
+        <p> Ready to explore? </p>
+            <label for="zip_code"> Your Zip</label>
+            <input id="zip" name="zip" type="text" inputmode="numeric" placeholder="13210" pattern="^\d{5}">
+            <label for="transport_mode">  Exploration mode</label>
+            <select id="transport_mode" name="transport_mode">
+                <option value="transport_mode">Select exploration mode</option>
+                <option value="Walk">Walk</option>
+                <option value="Bike">Bike</option>
+                <option value="Horse Riding">Horse Riding</option>
+                <option value="Snowmobile">Snowmobile</option>
+                <option value="Accessible">Accessible</option>
+            </select>
+            <label for="elevation_gain">  Elevation gain (m)</label>
+            <input id="elevation" name="elevation" type="number" inputmode="numeric" placeholder="130">
+            <label for="Trail_length">  Trail length (miles)</label>
+            <input id="Trail" name="Trail" type="number" inputmode="numeric" placeholder="2">
+            <label for="experience">Experience Level</label> 
+            <select id="experience" name="experience">
+                <option value="experience">Select experience</option>
+                <option value="Easy">Beginner</option>
+                <option value="Medium">Moderate</option>
+                <option value="Hard">Experienced</option>
+            </select>  
+            <label for="distance">Filter by distance:</label>
+            <select id="distance" name="distance">
+                <option value="0">All</option>
+                <option value="10">Within 10 mile</option>
+                <option value="50">Within 50 miles</option>
+                <option value="100">Within 100 miles</option>
+            </select><br><br>
+        <input type="submit" value="Let's go!" id="mode">
+        </form>
+        <div style="width: 60%; margin: 0 auto;">
+            <iframe src="{{ url_for('static', filename='map.html') }}" style="width:100%; height:500px;"></iframe>
+        </div>
+        <br>
+        <button onclick="window.location.href='/difficulty'">Choose By Difficulty Level</button>
+   </body>
+</html>

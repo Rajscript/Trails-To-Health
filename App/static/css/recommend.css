@@ -1,0 +1,55 @@
+body {
+  background-image: url("https://images.unsplash.com/photo-1557688037-fb851b84c3db?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+label{
+  color: yellow;
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+  width: 200px;
+  display: flex;
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+h1{
+  color: rgb(172, 99, 161);
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+h2{
+  color: rgb(172, 99, 161);
+  text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 14px;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+td {
+  color: rgb(16, 15, 15);
+}
+
+th {
+  background-color: #bea9c8;
+}
+
+/**tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+**/
+
+tr {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #a30d0d;
+}
