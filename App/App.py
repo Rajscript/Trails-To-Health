@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, flash, redirect, Markup 
-from IPython.display import HTML
 from flask_table import Table, Col
 import pandas as pd
 from TrailRecommedations import TrailRecommendation
