@@ -34,9 +34,9 @@ class TrailDifficulty:
         # Calculate distance between user's zipcode and each trail
         user_lat, user_long = self.get_lat_long(user_input['Zip'])
         # Filter trails by zip code
-        self.df['Distance From You(in miles)'] = self.df.apply(lambda row: geodesic((user_lat, user_long), (row['latitude'], row['longitude'])).miles, axis=1)
+        self.df['Distance From You(miles)'] = self.df.apply(lambda row: geodesic((user_lat, user_long), (row['latitude'], row['longitude'])).miles, axis=1)
         h=self.df[(self.df['Difficulty']==user_input['Difficulty']) & (self.df['Length(miles)']>0.2)]
-        h = h.sort_values('Distance From You(in miles)')
+        h = h.sort_values('Distance From You(miles)')
         #print(h.head(20))
         return h.head(10)
 

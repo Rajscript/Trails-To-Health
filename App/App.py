@@ -38,7 +38,8 @@ def difficulty():
         # Create new column to make it clickable using the website column
         df_reco['Site Name'] = df_reco.apply(lambda row: '<a href="{}">{}</a>'.format(row['website'], row['site_name']), axis=1)
         df_reco['Elevation Gain(feet)'] = df_reco['Elevation_Gain']/3.28
-        df_reco=df_reco[['Distance From You(in miles)', 'Site Name', 'Name', 'Length(miles)', 'Elevation Gain(in feet)']]
+        print(df_reco['Elevation_Gain'])
+        df_reco=df_reco[['Distance From You(miles)', 'Site Name', 'Name', 'Length(miles)', 'Elevation Gain(feet)' ]]
         # Convert the recommendation dataframe to an HTML table
         recommendations_table = Markup(df_reco.to_html(index=False, render_links=True,
     escape=False))
@@ -98,7 +99,7 @@ def recommend():
     recommendations = trails.get_recommendations(user_input)
     recommendations['Site Name'] = recommendations.apply(lambda row: '<a href="{}">{}</a>'.format(row['website'], row['site_name']), axis=1)
     #recommendations['Elevation Gain(in feet)'] = recommendations['Elevation_Gain']/3.28
-    selected_rec = recommendations[['Site Name', 'Name', 'Length(miles)', 'Elevation Gain(feet)', 'Distance From You(in miles)']]
+    selected_rec = recommendations[['Site Name', 'Name', 'Length(miles)', 'Elevation Gain(feet)', 'Distance From You(miles)']]
     #print(selected_rec.empty)
     if selected_rec.empty:
        message = "Sorry! No matches were found."

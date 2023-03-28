@@ -91,7 +91,7 @@ class TrailRecommendation:
         # Preprocess trail data
         #self.preprocess_data()
         # Filter trails by zip code
-        self.df['Distance From You(in miles)'] = self.df.apply(lambda row: geodesic((user_lat, user_long), (row['latitude'], row['longitude'])).miles, axis=1)
+        self.df['Distance From You(miles)'] = self.df.apply(lambda row: geodesic((user_lat, user_long), (row['latitude'], row['longitude'])).miles, axis=1)
         #print(self.df['distance'])
         # Calculate cosine similarity between user input and trails
         X = self.df[self.categorical_features + list(self.encoded_features)]
@@ -107,7 +107,7 @@ class TrailRecommendation:
         #print(h)
         # filter the DataFrame by the 'B' column and show the top 20 rows
         if dist != 0:
-            filtered_df = h[h['Distance From You(in miles)'] <= dist].head(20)
+            filtered_df = h[h['Distance From You(miles)'] <= dist].head(20)
         else:
             filtered_df = h.head(20)
         print(filtered_df)
