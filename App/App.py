@@ -5,10 +5,15 @@ from TrailRecommedations import TrailRecommendation
 from TrailDifficulty import TrailDifficulty
 import folium
 import re
+import os
 
 app = Flask(__name__)
 
-df = pd.read_csv('Finalized_Trail_paths.csv')
+#df = pd.read_csv('Finalized_Trail_paths.csv')
+app_root = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(app_root, 'Finalized_Trail_paths.csv')
+
+df = pd.read_csv(csv_path)
 print(df)
 trails = TrailRecommendation(df)
 trails.preprocess_data()
