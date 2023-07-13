@@ -1,5 +1,6 @@
 # Trails To Health
 Trails to Health is a web application that recommends hiking trails based on user preferences such as location, transport mode, elevation gain, trail length, experience level, and distance. The application can also recommend trails solely on difficulty level.
+![](Image/image.jpg)
 
 # Installation
 1. Clone the repository: `git clone https://github.com/Rajscript/Trails-To-Health.git`
