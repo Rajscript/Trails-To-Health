@@ -137,7 +137,7 @@ def run_streamlit_app():
     }}
 
     [data-testid="stSidebar"] > div:first-child {{
-    background-image: url("data:image/png;base64,{img}");
+    background-image: url("data:App/image/png;base64,{img}");
     background-position: center; 
     background-repeat: no-repeat;
     background-attachment: local;
