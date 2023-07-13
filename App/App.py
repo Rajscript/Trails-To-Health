@@ -31,7 +31,7 @@ def get_recommendations(user_input):
     return selected_rec
 
 def home_page():
-    with open("static/map.html", "r") as file:
+    with open("App/static/map.html", "r") as file:
         html_content = file.read()
     st.components.v1.html(html_content, height=800)
 
