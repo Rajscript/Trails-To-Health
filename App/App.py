@@ -125,7 +125,7 @@ def difficulty_page():
 
 
 def run_streamlit_app():
-    img = get_img_as_base64("static/image.jpg")
+    img = get_img_as_base64("App/static/image.jpg")
     page_bg_img = f"""
     <style>
     [data-testid="stAppViewContainer"] {{
@@ -137,7 +137,7 @@ def run_streamlit_app():
     }}
 
     [data-testid="stSidebar"] > div:first-child {{
-    background-image: url("data:App/image/png;base64,{img}");
+    background-image: url("data:image/png;base64,{img}");
     background-position: center; 
     background-repeat: no-repeat;
     background-attachment: local;
