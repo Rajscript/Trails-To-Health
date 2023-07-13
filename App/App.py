@@ -100,7 +100,7 @@ def difficulty_page():
 
     if st.button("Submit"):
         # Read the difficulty data
-        df_difficulty = pd.read_csv('Trail_Difficulty.csv')
+        df_difficulty = pd.read_csv('App/Trail_Difficulty.csv')
 
         # Create user input dictionary
         user_input = {
