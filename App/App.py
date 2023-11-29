@@ -34,7 +34,7 @@ def get_recommendations(user_input):
     return selected_rec
 
 def home_page():
-    with open("static/map.html", "r") as file:
+    with open("App/static/map.html", "r") as file:
         html_content = file.read()
     st.components.v1.html(html_content, height=800)
 
@@ -104,7 +104,7 @@ def difficulty_page():
 
     if st.button("Submit"):
         # Read the difficulty data
-        df_difficulty = pd.read_csv('Trail_Difficulty.csv')
+        df_difficulty = pd.read_csv('App/Trail_Difficulty.csv')
 
         # Create user input dictionary
         user_input = {
