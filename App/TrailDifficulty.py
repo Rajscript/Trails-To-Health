@@ -4,6 +4,7 @@ from geopy.geocoders import Nominatim
 from geopy import distance
 from geopy.distance import geodesic
 import requests
+from TrailRecommedations import TrailRecommendation
 
 
 class TrailDifficulty:
@@ -33,9 +34,10 @@ class TrailDifficulty:
 
         # Calculate distance between user's zipcode and each trail
         user_lat, user_long = self.get_lat_long(user_input['Zip'])
+        print(self.df.head(20))
         # Filter trails by zip code
         self.df['Distance From You(miles)'] = self.df.apply(lambda row: geodesic((user_lat, user_long), (row['latitude'], row['longitude'])).miles, axis=1)
-        h=self.df[(self.df['Difficulty']==user_input['Difficulty']) & (self.df['Length(miles)']>0.2)]
+        h=self.df[(self.df['Difficulty_rating_KModes']==user_input['Difficulty']) & (self.df['Length(miles)']>0.3)] # & (self.df['Length(miles)']>0.2)
         h = h.sort_values('Distance From You(miles)')
         #print(h.head(20))
         return h.head(10)
@@ -46,7 +48,7 @@ if __name__ == "__main__":
     #print(df)
     difficulty=TrailDifficulty(df)
     user_input={
-        'Zip': '13211', 'Difficulty': 'Very Easy'
+        'Zip': '13211', 'Difficulty': 'Very Hard – The Leg-Day Loco'
     }
     df_diff=difficulty.get_recommendations(user_input)
     print(df_diff.head(20))
