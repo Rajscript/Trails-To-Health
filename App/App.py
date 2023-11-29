@@ -16,7 +16,8 @@ csv_path = os.path.join(app_root, 'Finalized_Trail_paths.csv')
 df = pd.read_csv(csv_path)
 trails = TrailRecommendation(df)
 trails.preprocess_data()
-
+print(trails.df['Length(miles)'])
+print("HEY HEY HEY")
 @st.cache_data
 def get_img_as_base64(file):
     with open(file, "rb") as f:
@@ -25,13 +26,15 @@ def get_img_as_base64(file):
 
 @st.cache
 def get_recommendations(user_input):
+    print("Say something funny")
     recommendations = trails.get_recommendations(user_input)
     recommendations['Site Name'] = recommendations.apply(lambda row: '<a href="{}">{}</a>'.format(row['website'], row['site_name']), axis=1)
+    print(recommendations.head(20))
     selected_rec = recommendations[['Site Name', 'Name', 'Length(miles)', 'Elevation Gain(feet)', 'Distance From You(miles)']]
     return selected_rec
 
 def home_page():
-    with open("App/static/map.html", "r") as file:
+    with open("static/map.html", "r") as file:
         html_content = file.read()
     st.components.v1.html(html_content, height=800)
 
@@ -74,7 +77,7 @@ def recommendation_page():
         # Get recommendations
         recommendations = trails.get_recommendations(user_input)
         recommendations['Site Name'] = recommendations.apply(lambda row: f'<a href="{row["website"]}">{row["site_name"]}</a>', axis=1)
-        selected_rec = recommendations[['Site Name', 'Name', 'Length(miles)', 'Elevation Gain(feet)', 'Distance From You(miles)']]
+        selected_rec = recommendations[['Site Name', 'Name', 'Elevation Gain(feet)', 'Length(miles)', 'Distance From You(miles)']] #'Length(miles)',
 
         if selected_rec.empty:
             st.warning("Sorry! No matches were found.")
@@ -96,11 +99,12 @@ def recommendation_page():
 
 def difficulty_page():
     zip_code = st.text_input("Enter your zip code:")
-    difficulty_level = st.selectbox("Difficulty level", ['Easy', 'Medium', 'Hard'])
+    #difficulty_level = st.selectbox("Difficulty level", ['Easy', 'Medium', 'Hard'])
+    difficulty_level = st.selectbox("Difficulty level", ['Easy Peasy Lemon Squeezy', 'Medium – The Adventure Tickles', 'Hard – The Thrill Kicks In', 'Very Hard – The Leg-Day Loco'])
 
     if st.button("Submit"):
         # Read the difficulty data
-        df_difficulty = pd.read_csv('App/Trail_Difficulty.csv')
+        df_difficulty = pd.read_csv('Trail_Difficulty.csv')
 
         # Create user input dictionary
         user_input = {
@@ -113,7 +117,7 @@ def difficulty_page():
         df_reco = diff.get_recommendations(user_input)
         df_reco['Site Name'] = df_reco.apply(lambda row: f'<a href="{row["website"]}">{row["site_name"]}</a>', axis=1)
         df_reco['Elevation Gain(feet)'] = df_reco['Elevation_Gain'] / 3.28
-        df_reco = df_reco[['Distance From You(miles)', 'Site Name', 'Name', 'Length(miles)', 'Elevation Gain(feet)']]
+        df_reco = df_reco[['Distance From You(miles)', 'Site Name', 'Name', 'Length(miles)', 'Elevation Gain(feet)', 'type_factor']] #'Length(miles)'
         recommendations_table = df_reco.to_html(index=False, render_links=True, escape=False, classes='table', header=True, border=0,
                                                table_id='recommendations-table')
         custom_style = '<style>.dataframe { max-height: 1000px; overflow-y: auto; background-color: white; padding: 10px;}</style>'
@@ -125,7 +129,7 @@ def difficulty_page():
 
 
 def run_streamlit_app():
-    img = get_img_as_base64("App/static/image.jpg")
+    img = get_img_as_base64("static/image.jpg")
     page_bg_img = f"""
     <style>
     [data-testid="stAppViewContainer"] {{
