@@ -129,7 +129,7 @@ def difficulty_page():
 
 
 def run_streamlit_app():
-    img = get_img_as_base64("static/image.jpg")
+    img = get_img_as_base64("App/static/image.jpg")
     page_bg_img = f"""
     <style>
     [data-testid="stAppViewContainer"] {{

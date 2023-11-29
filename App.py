@@ -113,7 +113,7 @@ def difficulty_page():
         df_reco = diff.get_recommendations(user_input)
         df_reco['Site Name'] = df_reco.apply(lambda row: f'<a href="{row["website"]}">{row["site_name"]}</a>', axis=1)
         df_reco['Elevation Gain(feet)'] = df_reco['Elevation_Gain'] / 3.28
-        df_reco = df_reco[['Distance From You(miles)', 'Site Name', 'Name', 'Length(miles)', 'Elevation Gain(feet)']]
+        df_reco = df_reco[['Distance From You(miles)', 'Site Name', 'Name', 'Length(miles)', 'Elevation Gain(feet)', 'type_factor']]
         recommendations_table = df_reco.to_html(index=False, render_links=True, escape=False, classes='table', header=True, border=0,
                                                table_id='recommendations-table')
         custom_style = '<style>.dataframe { max-height: 1000px; overflow-y: auto; background-color: white; padding: 10px;}</style>'
