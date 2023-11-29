@@ -49,6 +49,10 @@ class TrailRecommendation:
         self.encoded_features = encoded_features
         encoded_df = pd.DataFrame(encoded_data.toarray(), columns=encoded_features)
         self.df = pd.concat([self.df, encoded_df], axis=1)
+        #print(self.df['Shape_Leng'])
+        print(self.df['Length(miles)'])
+        print("Hello")
+            
         return self.df
    
     def get_lat_long(self, zipcode):
